@@ -5,10 +5,20 @@ import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import FormattedMessage from 'components/FormattedMessage';
 import TextField from 'material-ui/TextField';
-import FlatButton from 'material-ui/FlatButton';
+import Button from 'components/Button';
 import messages from './messages';
 import { signinWithEmail } from './actions';
 import selectSignin from './selectors';
+
+const SigninWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & > div:last-of-type {
+    margin-bottom: 20px;
+  }
+`;
 
 export class Signin extends React.Component { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
@@ -49,14 +59,9 @@ export class Signin extends React.Component { // eslint-disable-line react/prefe
   }
 
   render() {
-    const SigninWrapper = styled.div`
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    `;
 
     return (
-      <div>
+      <SigninWrapper>
         <TextField
           errorText={this.getError()}
           type="text"
@@ -73,11 +78,11 @@ export class Signin extends React.Component { // eslint-disable-line react/prefe
           floatingLabelText={<FormattedMessage {...messages.password} />}
           fullWidth
         />
-        <FlatButton
+        <Button
           onClick={() => this.login(this.state.email, this.state.password)}
           label={<FormattedMessage {...messages.login} />}
         />
-      </div>
+      </SigninWrapper>
     );
   }
 }

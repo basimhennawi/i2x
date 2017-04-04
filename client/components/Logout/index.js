@@ -4,7 +4,7 @@ import { push } from 'react-router-redux';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import FormattedMessage from 'components/FormattedMessage';
-import FlatButton from 'material-ui/FlatButton';
+import Button from 'components/Button';
 import { getToken } from 'utils/api';
 import messages from './messages';
 import { logout } from './actions';
@@ -25,14 +25,14 @@ export class Logout extends React.Component { // eslint-disable-line react/prefe
     if (!getToken()) return null;
 
     const LogoutWrapper = styled.div`
-      display: flex;
-      justify-content: center;
-      align-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     `;
 
     return (
       <LogoutWrapper>
-        <FlatButton
+        <Button
           onClick={this.logoutHandler.bind(this)} // eslint-disable-line react/jsx-no-bind
           label={<FormattedMessage {...messages.logout} />}
         />

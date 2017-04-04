@@ -20,7 +20,29 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import Logout from 'components/Logout';
+import Signin from 'components/Signin';
 
+  const Wrapper = styled.section`
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 100vh;
+    -webkit-flex-wrap: wrap;
+    & * {
+      font-family: 'Lato';
+    }
+  `;
+
+  const ChildrenWrapper = styled.section`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+  `;
+  
 export class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
@@ -28,22 +50,13 @@ export class App extends React.PureComponent { // eslint-disable-line react/pref
   };
 
   render() {
-    const Wrapper = styled.section`
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px 30px 0;
-      @media (max-width: 768px) {
-        padding: 10px 20px 0;
-      }
-    `;
-
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
         <Wrapper>
           <Header />
-          <Logout />
-          {React.Children.toArray(this.props.children)}
+          <ChildrenWrapper>
+            {React.Children.toArray(this.props.children)}
+          </ChildrenWrapper>
           <Footer />
         </Wrapper>
       </MuiThemeProvider>
