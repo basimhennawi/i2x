@@ -1,0 +1,13 @@
+# Don't check auto-generated stuff into git
+dist
+coverage
+stats.json
+node_modules
+build
+.tmp
+public
+.env
+
+# Cruft
+npm-debug.log
+.idea
