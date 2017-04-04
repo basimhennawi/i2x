@@ -7,6 +7,23 @@ import { getAsyncInjectors } from 'utils/asyncInjectors';
 import values from 'lodash/values';
 import keys from 'lodash/keys';
 
+import {
+  loadReducers as loadAppReducers,
+  loadSagas as loadAppSagas,
+} from 'pages/App/dependencies';
+import {
+  loadReducers as loadLoginPageReducers,
+  loadSagas as loadLoginPageSagas,
+} from 'pages/LoginPage/dependencies';
+import {
+  loadReducers as loadListViewPageReducers,
+  loadSagas as loadListViewPageSagas,
+} from 'pages/ListViewPage/dependencies';
+import {
+  loadReducers as loadNotFoundPageReducers,
+  loadSagas as loadNotFoundPageSagas,
+} from 'pages/NotFoundPage/dependencies';
+
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
 };
@@ -49,5 +66,41 @@ export const createFrontendRoutes = (store) => {
   importReducersAndSagas(store, loadAppReducers, loadAppSagas);
 
   return [
+    {
+      path: '/login',
+      name: 'login',
+      getComponent(nextState, cb) {
+        renderPage(
+          System.import('pages/LoginPage'),
+          loadLoginPageReducers,
+          loadLoginPageSagas,
+          cb
+        );
+      },
+    },
+    {
+      path: '/list-recordings',
+      name: 'listRecordings',
+      getComponent(nextState, cb) {
+        renderPage(
+          System.import('pages/ListViewPage'),
+          loadListViewPageReducers,
+          loadListViewPageSagas,
+          cb
+        );
+      },
+    },
+    {
+      path: '*',
+      name: 'notfound',
+      getComponent(nextState, cb) {
+        renderPage(
+          System.import('pages/NotFoundPage'),
+          loadNotFoundPageReducers,
+          loadNotFoundPageSagas,
+          cb
+        );
+      },
+    },
   ];
 };
