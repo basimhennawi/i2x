@@ -259,6 +259,7 @@
     "react-router-redux": "4.0.6",
     "react-router-scroll": "0.4.1",
     "react-scroll": "^1.4.7",
+    "react-star-rating-component": "^1.2.4",
     "react-sticky": "^5.0.5",
     "react-tap-event-plugin": "^2.0.1",
     "react-tooltip": "^3.2.10",
