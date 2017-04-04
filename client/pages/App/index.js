@@ -17,6 +17,9 @@ import styled from 'styled-components';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
+import Logout from 'components/Logout';
 
 export class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -38,7 +41,10 @@ export class App extends React.PureComponent { // eslint-disable-line react/pref
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
         <Wrapper>
+          <Header />
+          <Logout />
           {React.Children.toArray(this.props.children)}
+          <Footer />
         </Wrapper>
       </MuiThemeProvider>
     );
