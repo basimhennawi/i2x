@@ -1,7 +1,7 @@
 ![alt tag](./client/assets/i2x-logo.png)
 
 ## Summary
-This challenge is a part from i2x interview process to Basim Hennawi.
+This challenge is a part from i2x interview process.
 
 It's a simple React app with two views:
 1. Login Page (/login)
@@ -38,7 +38,6 @@ Check the code applies all linting configuration bu running:
 ```bash
 $ npm run lint
 ```
-
 #### Routes
 
 - **/login**
@@ -46,6 +45,24 @@ $ npm run lint
 - **/list-recordings**
 -- This page will get you a list view of the meta data of the recodings along with an audio player and logout button at top-right.
 
+#### Deployment
+
+**Step 1**: Create a Procfile with the following line: `web: npm run start:prod`. We do this because Heroku runs npm run start by default, so we need this setting to override the default run command.
+
+**Step 2**: Install the Node.js buildpack for your Heroku app by running the following command: `heroku buildpacks:set https://github.com/heroku/heroku-buildpack-nodejs#v98 -a basimhennawi-i2x`.
+
+**Step 3**: Add this line to your `package.json` file in the scripts area: `"heroku-postbuild": "npm run build",`. Then, adjust the prebuild script in your package.json file so it looks like this: `"prebuild": "npm run build:clean"`, to avoid having Heroku attempt to run Jest tests (which are unsupported with this buildpack).
+
+**Step 4**: Run `heroku config:set NPM_CONFIG_PRODUCTION=false` so that Heroku can compile the NPM modules included in your devDependencies (since many of these packages are required for the build process).
+
+**Step 5**: Follow the standard Heroku deploy process:
+```
+git add .
+git commit -m 'Made some epic changes as per usual'
+git push heroku master
+```
+
+Finally, you got link to live demo on Heroku: [https://basimhennawi-i2x.herokuapp.com/](https://basimhennawi-i2x.herokuapp.com/)
 
 ## Project Structure
 
@@ -64,24 +81,7 @@ $ npm run lint
     │   └── index.js                    - Client entry point
     ├── package.json                    - List of dependencies
 
-#### Deployment
 
-**Step 1**: Create a Procfile with the following line: web: npm run start:prod. We do this because Heroku runs npm run start by default, so we need this setting to override the default run command.
-
-**Step 2**: Install the Node.js buildpack for your Heroku app by running the following command: heroku buildpacks:set https://github.com/heroku/heroku-buildpack-nodejs#v91 -a [your app name]. Make sure to replace #v91 with whatever the latest buildpack is, which you can find here.
-
-**Step 3**: Add this line to your package.json file in the scripts area: "heroku-postbuild": "npm run build",. This is so Heroku can build your production assets when deploying (more of which you can read about here). Then, adjust the prebuild script in your package.json file so it looks like this: "prebuild": "npm run build:clean", to avoid having Heroku attempt to run Jest tests (which are unsupported with this buildpack).
-
-**Step 4**: Run heroku config:set NPM_CONFIG_PRODUCTION=false so that Heroku can compile the NPM modules included in your devDependencies (since many of these packages are required for the build process).
-
-**Step 5**: Follow the standard Heroku deploy process:
-```
-git add .
-git commit -m 'Made some epic changes as per usual'
-git push heroku master
-```
-
-Finally, you got link to live demo on Heroku: [https://basimhennawi-i2x.herokuapp.com/](https://basimhennawi-i2x.herokuapp.com/)
 ## Technologies
 
 ### Frameworks
