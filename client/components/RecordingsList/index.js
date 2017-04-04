@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { push } from 'react-router-redux';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
+import ReactAudioPlayer from 'react-audio-player';
 import Loading from 'components/Loading';
 import { formatDate, convertSecsToMins } from 'utils/helpers';
 import { fetchRecordings } from './actions';
@@ -51,7 +52,7 @@ class RecordingsList extends React.Component { // eslint-disable-line react/pref
             Text: <h4>{item.final_script}</h4>
             Rating: <h4>{item.rating}</h4>
             Duration: <h4>{convertSecsToMins(item.duration)}m</h4>
-            Audio URL: <h4>{item.url}</h4>
+            Audio URL: <ReactAudioPlayer src={item.url} />
             Created at: <h4>{formatDate(item.created, 'MMMM DD, YYYY, h:mm a')}</h4>
             <hr />
           </div>

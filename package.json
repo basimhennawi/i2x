@@ -246,6 +246,7 @@
     "passport": "^0.3.2",
     "password-hash-and-salt": "^0.1.4",
     "react": "15.4.1",
+    "react-audio-player": "^0.3.3",
     "react-dom": "15.4.1",
     "react-helmet": "3.2.2",
     "react-icon-base": "^2.0.4",
