@@ -2,15 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import FlatButton from 'material-ui/FlatButton';
 
-const Button = styled(FlatButton)`
+const ButtonWrapper = styled(FlatButton)`
   width: 100%;
 `;
 
-
-
-export default ({onClick, label}) => (
-  <Button
-    onClick={onClick} 
-    label={label}>
-  </Button>
+const Button = ({ onClick, label }) => (
+  <ButtonWrapper
+    onClick={onClick}
+    label={label}
+  >
+  </ButtonWrapper>
 );
+
+Button.propTypes = {
+  onClick: React.PropTypes.func,
+  label: React.PropTypes.any,
+};
+
+export default Button;

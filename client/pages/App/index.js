@@ -19,29 +19,28 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import Signin from 'components/Signin';
 
-  const Wrapper = styled.section`
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    min-height: 100vh;
-    -webkit-flex-wrap: wrap;
-    & * {
-      font-family: 'Lato';
-    }
-  `;
+const Wrapper = styled.section`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  -webkit-flex-wrap: wrap;
+  & * {
+    font-family: 'Trebuchet MS';
+  }
+`;
 
-  const ChildrenWrapper = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 1200px;
-    width: 100%;
-    padding: 0 20px;
-  `;
-  
+const ChildrenWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 20px;
+`;
+
 export class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {

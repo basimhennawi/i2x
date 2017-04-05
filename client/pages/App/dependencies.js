@@ -4,7 +4,7 @@ import {
 } from 'components/Logout/dependencies';
 
 import {
-  loadReducers as loadSigninReducers,  // eslint-disable-line no-unused-vars
+  loadReducers as loadSigninReducers,
   loadSagas as loadSigninSagas,
 } from 'components/Signin/dependencies';
 
@@ -13,6 +13,6 @@ export const loadReducers = () => ({
 });
 
 export const loadSagas = () => [
-  ...loadLogoutSagas(),
   ...loadSigninSagas(),
+  ...loadLogoutSagas(),
 ];

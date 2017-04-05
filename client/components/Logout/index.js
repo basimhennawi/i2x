@@ -19,24 +19,23 @@ export class Logout extends React.Component { // eslint-disable-line react/prefe
   componentWillMount() {
     this.state = {
       showBtn: true,
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.status.success && getToken()) {
+      this.setState({ showBtn: true });
     }
   }
 
   logoutHandler() {
     this.props.logout();
     this.props.push('/login');
-    this.setState({ showBtn : false });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.status.success && getToken()) {
-      this.setState({ showBtn : true });
-    }
+    this.setState({ showBtn: false });
   }
 
   render() {
-    // Only show logout btn when user is loggedin
-    if (! this.state.showBtn) return null;
+    if (!this.state.showBtn) return null;
 
     const LogoutWrapper = styled.div`
         display: flex;

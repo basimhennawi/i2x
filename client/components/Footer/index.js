@@ -12,6 +12,6 @@ const FooterWrapper = styled.div`
 
 export default () => (
   <FooterWrapper>
-    <h6>© 2017 by Basim Hennawi, i2x challenge</h6>
+    <h6>© 2017 by Basim Hennawi | i2x challenge</h6>
   </FooterWrapper>
 );

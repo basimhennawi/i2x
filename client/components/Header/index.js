@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Logout from 'components/Logout';
 import Logo from 'components/Logo';
 
-
 const HeaderWrapper = styled.div`
   display: flex;
   // position: fixed;
@@ -27,8 +26,8 @@ const LogoContainer = styled.div `
 export default () => (
   <HeaderWrapper>
     <LogoContainer>
-      <Logo/>
+      <Logo />
     </LogoContainer>
-    <Logout/>
+    <Logout />
   </HeaderWrapper>
 );

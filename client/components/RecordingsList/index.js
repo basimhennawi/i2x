@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import styled from 'styled-components';
 import { push } from 'react-router-redux';
@@ -7,6 +9,7 @@ import ReactAudioPlayer from 'react-audio-player';
 import StarRatingComponent from 'react-star-rating-component';
 import Loading from 'components/Loading';
 import { formatDate, convertSecsToMins } from 'utils/helpers';
+import { getToken } from 'utils/api';
 import { fetchRecordings } from './actions';
 import selectRecordingsList from './selectors';
 
@@ -21,19 +24,27 @@ class RecordingsList extends React.Component { // eslint-disable-line react/pref
   static defaultProps = {
     list: [],
   };
-
+  
   componentDidMount() {
-    this.props.fetchRecordings();
+    if (getToken()) {
+      this.props.fetchRecordings();
+    } else {
+      this.backToLogin();
+    }
   }
 
   componentWillReceiveProps(nextProps) {
     if (!nextProps.status.success && nextProps.status.error) {
-      this.props.push('/login');
+      this.backToLogin();
     }
   }
 
+  backToLogin() {
+    this.props.push('/login');
+  }
+
   formatFinalScript(str) {
-    var urlRegex = 
+    const urlRegex = 
       new RegExp(
       '((https?://)' + 
       '(([0-9]{1,3}\.){3}[0-9]{1,3}' + // IP- 199.194.52.184 
@@ -44,7 +55,7 @@ class RecordingsList extends React.Component { // eslint-disable-line react/pref
       '(:[0-9]{1,4})?' + // port number- :80 
       '((/?)|' + // a slash isn't required if there is no file name 
       '(/[0-9a-z_!~*\'().;?:@&=+$,%#-]+)+/?))',
-      "gi");
+      'gi');
 
     return str.replace(urlRegex, "<a href='$1'>$1</a>").replace(/(?:\r\n|\r|\n)/g, '<br/>');
   }
@@ -58,7 +69,6 @@ class RecordingsList extends React.Component { // eslint-disable-line react/pref
     if (status.isLoading) {
       return <Loading />;
     }
-    
 
     const PageWrapper = styled.section`
       width: 100%;
@@ -109,7 +119,7 @@ class RecordingsList extends React.Component { // eslint-disable-line react/pref
 
     const Rating = styled.div `
       display: flex;
-    `
+    `;
 
     const AudioDuration = styled.h4 `
       line-height: 120%;
@@ -126,13 +136,13 @@ class RecordingsList extends React.Component { // eslint-disable-line react/pref
       & p {
         font-size: 14px;
       }
-    `
+    `;
 
     const AudioRecording = styled.div `
       line-height: 120%;
       display: flex;
       align-items: center;
-    `
+    `;
 
     const CreationDate = styled.div `
       display: flex;
@@ -149,17 +159,17 @@ class RecordingsList extends React.Component { // eslint-disable-line react/pref
         overflow: hidden;
         text-overflow: ellipsis;
       }
-    `
+    `;
 
     return (
       <PageWrapper>
         <Title>Recordings List</Title>
         {list.map((item, index) => (
           <RecordingWrapper key={index}>
-            <FinalScript dangerouslySetInnerHTML={{__html: this.formatFinalScript(item.final_script)}}/>
+            <FinalScript dangerouslySetInnerHTML={{ __html: this.formatFinalScript(item.final_script) }} />
             <Rating>
-              <StarRatingComponent 
-                name={String(index)} 
+              <StarRatingComponent
+                name={String(index)}
                 editing={false}
                 renderStarIcon={() => <span>★</span>}
                 starCount={5}

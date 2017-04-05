@@ -59,7 +59,6 @@ export class Signin extends React.Component { // eslint-disable-line react/prefe
   }
 
   render() {
-
     return (
       <SigninWrapper>
         <TextField
