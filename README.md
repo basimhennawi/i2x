@@ -62,7 +62,7 @@ git commit -m 'Made some epic changes as per usual'
 git push heroku master
 ```
 
-Finally, you got your own link to your Heroku app OR you can try the already delpoyed version on this link: [https://basimhennawi-i2x.herokuapp.com/](https://basimhennawi-i2x.herokuapp.com/)
+Finally, you got your own link to your Heroku app OR you can try the already delpoyed version on this link: [https://basimhennawi-i2x.herokuapp.com/](https://basimhennawi-i2x.herokuapp.com/login)
 
 ## Project Structure
 
