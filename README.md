@@ -7,7 +7,7 @@ It's a simple React app with two views:
 1. Login Page (/login)
 2. List recordings page (/list-recordings)
 
-This is built using React framework along with FLUX/Redux archeticture according to the requirements mentioned in the [challenge](./challenge.pdf).
+This is built using React framework along with FLUX/Redux archeticture and according to the requirements mentioned in the [challenge](./challenge.pdf).
 
 ## Usage
 
@@ -62,23 +62,26 @@ git commit -m 'Made some epic changes as per usual'
 git push heroku master
 ```
 
-Finally, you got link to live demo on Heroku: [https://basimhennawi-i2x.herokuapp.com/](https://basimhennawi-i2x.herokuapp.com/)
+Finally, you got your own link to your Heroku app OR you can try the already delpoyed version on this link: [https://basimhennawi-i2x.herokuapp.com/](https://basimhennawi-i2x.herokuapp.com/)
 
 ## Project Structure
 
 
     ├── client                          - All of the client side code resides in this folder
+    │   ├── apis                        - Hookup with API endpoints
     │   ├── assets                      - Images and other static files
     │   ├── components                  - React components, and messages files
     │   ├── modules                     - Reusable modules
     │   ├── pages                       - React page components with their tests
     │   │   ├── App                     - App page component
-    │   │   │   ├── tests               - Page comp. js test files
+    │   │   │   ├── tests               - Page components js test files
     │   ├── tests                       - Root client js test files
     │   ├── utils                       - Util files with its tests
     │   │   │   ├── tests               - Util js test files
     │   ├── index.html                  - HTML template file used by html-webpack-plugin
     │   └── index.js                    - Client entry point
+    ├── server                          - All of the server side code resides in this folder
+    │   └── index.js                    - Server entry point
     ├── package.json                    - List of dependencies
 
 

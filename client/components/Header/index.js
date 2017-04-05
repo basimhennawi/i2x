@@ -5,7 +5,6 @@ import Logo from 'components/Logo';
 
 const HeaderWrapper = styled.div`
   display: flex;
-  // position: fixed;
   background-color: #eee;
   width: 100%;
   @media (min-width: 1215px) {
