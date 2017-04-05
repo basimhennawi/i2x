@@ -159,18 +159,18 @@ class RecordingsList extends React.Component { // eslint-disable-line react/pref
             <FinalScript dangerouslySetInnerHTML={{__html: this.formatFinalScript(item.final_script)}}/>
             <Rating>
               <StarRatingComponent 
-                name={index} 
+                name={String(index)} 
                 editing={false}
                 renderStarIcon={() => <span>★</span>}
                 starCount={5}
                 value={item.rating}
               />
             </Rating>
-            <AudioDuration><h4>Audio duration:</h4><p title={convertSecsToMins(item.duration)+"m"}>{convertSecsToMins(item.duration)}m</p></AudioDuration>
+            <AudioDuration>Audio duration:{convertSecsToMins(item.duration)}m</AudioDuration>
             <AudioRecording>
               <ReactAudioPlayer src={item.url} />
             </AudioRecording>
-            <CreationDate><h4>Created at:</h4><p title={formatDate(item.created, 'MMMM DD, YYYY, h:mm a')}>{formatDate(item.created, 'MMMM DD, YYYY, h:mm a')}</p></CreationDate>
+            <CreationDate><h4>Created at:</h4>{formatDate(item.created, 'MMMM DD, YYYY, h:mm a')}</CreationDate>
           </RecordingWrapper>
         ))}
       </PageWrapper>

@@ -19,7 +19,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import Logout from 'components/Logout';
 import Signin from 'components/Signin';
 
   const Wrapper = styled.section`
